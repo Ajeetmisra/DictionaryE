@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/edit"
-        android:layout_width="388dp"
-        android:layout_height="85dp"
+        android:layout_width="338dp"
+        android:layout_height="87dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,14 +32,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184"
+        app:layout_constraintVertical_bias="0.25"
         tools:ignore="MissingConstraints,NotSibling" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="411dp"
-        android:layout_height="316dp"
-        android:text="........"
+        android:layout_width="368dp"
+        android:layout_height="307dp"
+        android:text=""
+        android:padding = "20dp"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
