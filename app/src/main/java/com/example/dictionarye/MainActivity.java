@@ -3,6 +3,7 @@ package com.example.dictionarye;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 //    final String apikey = "realabbas";
     String txt;
 //    String finalurl = "https://b8qalj4ph8.execute-api.ap-south-1.amazonaws.com/production/dictionary?word="+ txt +"&apikey=realabbas";
+ProgressDialog Dialog;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
 //               net(baseUrl);
        textView =(TextView) findViewById(R.id.textView);
+        Dialog  = new ProgressDialog(MainActivity.this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 txt = editText.getText().toString();
                 Log.d("dict", "onClick: " + txt);
                 String finalurl = "https://b8qalj4ph8.execute-api.ap-south-1.amazonaws.com/production/dictionary?word="+ txt +"&apikey=realabbas";
-
+                Dialog.setMessage("Fetching Appropriate Meaning.... ");
+                Dialog.show();
 //    dictionaryAsynTask task =new  dictionaryAsynTask();
 //    task.execute(finalurl);
                 net(finalurl);
-//                Context context = null;
-//
+
                 InputMethodManager mngr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 mngr.hideSoftInputFromWindow(editText.getWindowToken(), 0);
@@ -86,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Log.d("bitcoin", "onSuccess: "+ response.getString("meaning"));
                        textView.setText(response.getString("meaning"));
+                    Dialog.dismiss();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
